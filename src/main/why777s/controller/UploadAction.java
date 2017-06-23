@@ -2,6 +2,8 @@ package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import service.PicsService;
+import util.Detect;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +14,7 @@ import java.io.FileOutputStream;
  */
 public class UploadAction extends ActionSupport {
 
+
     //封装上传文件域的成员变量
     private File upload;
     //封装上传文件类型的成员变量
@@ -20,6 +23,31 @@ public class UploadAction extends ActionSupport {
     private String uploadFileName;
     //直接在struts.xml配置值的方法
     private String savePath;
+
+    private String pornLevel;
+    private String terrorLevel;
+
+    private PicsService picsService;
+
+    public void setPicsService(PicsService picsService) {
+        this.picsService = picsService;
+    }
+
+    public String getPornLevel() {
+        return pornLevel;
+    }
+
+    public void setPornLevel(String pornLevel) {
+        this.pornLevel = pornLevel;
+    }
+
+    public String getTerrorLevel() {
+        return terrorLevel;
+    }
+
+    public void setTerrorLevel(String terrorLevel) {
+        this.terrorLevel = terrorLevel;
+    }
 
     public File getUpload() {
         return upload;
@@ -72,6 +100,10 @@ public class UploadAction extends ActionSupport {
         while ((len = fis.read(buffer)) > 0){
             fos.write(buffer,0,len);
         }
+
+        setPornLevel(picsService.pronResult(getSavePath()+"/"+getUploadFileName()));
+        setTerrorLevel(picsService.terrorResult(getSavePath()+"/"+getUploadFileName()));
+
 
         fos.close();
         fis.close();

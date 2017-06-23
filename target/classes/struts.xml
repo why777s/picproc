@@ -5,7 +5,9 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <!--<constant name="struts.multipart.saveDir" value="/Users/wangzhaojun/GitHub/picproc/target/picproc/uploadFiles"/>-->
+    <!-- 这个不要也没什么大影响-->
+    <constant name="struts.multipart.saveDir" value="/Users/wangzhaojun/GitHub/picproc/target/picproc/uploadFiles"/>
+
     <constant name="struts.multipart.maxSize" value="10000000"/>
     <constant name="struts.i18n.encoding" value="GBK"/>
     
@@ -20,7 +22,6 @@
             <param name="savePath">/uploadFiles</param>
             <result>/WEB-INF/pic_show.jsp</result>
         </action>
-
 
     </package>
 

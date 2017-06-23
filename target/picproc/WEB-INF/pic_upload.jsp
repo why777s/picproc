@@ -14,9 +14,10 @@
 <body>
 
 <s:form action="upload" method="POST" enctype="multipart/form-data">
-    <s:file name="upload" label="选择文件"/>
+    <s:file name="upload"/>
     <s:submit value="上传"/>
 </s:form>
+
 
 </body>
 </html>
